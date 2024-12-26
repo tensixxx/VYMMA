@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Drag and Drop</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f9f9f9;
+        }
+
+        .drop-zone {
+            width: 400px;
+            height: 250px;
+            border: 2px dashed #bbb;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            transition: background-color 0.3s, border-color 0.3s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .drop-zone.dragover {
+            background-color: #f0f0f0;
+            border-color: #999;
+        }
+
+        .drop-zone img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+
+        .drop-zone p {
+            margin: 0;
+            font-size: 16px;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="dropZone" class="drop-zone">
+        <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" alt="PDF Icon">
+        <p>Drag & Drop your PDF here</p>
+        <p>or click to select</p>
+    </div>
+    <input type="file" id="fileInput" hidden accept="application/pdf">
+    <script>
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+
+        // Handle click to open file dialog
+        dropZone.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        // Handle drag over
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('dragover');
+        });
+
+        // Handle drag leave
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('dragover');
+        });
+
+        // Handle file drop
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('dragover');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                uploadFile(files[0]);
+            }
+        });
+
+        // Handle file input change
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                uploadFile(e.target.files[0]);
+            }
+        });
+
+        // Function to upload file
+        function uploadFile(file) {
+            if (file.type !== 'application/pdf') {
+                alert('Please upload a PDF file.');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('filetoupload', file);
+
+            fetch('/fileupload', {
+                method: 'POST',
+                body: formData,
+            })
+                .then((response) => {
+                    console.log('Response status:', response.status);
+                    console.log('Response headers:', response.headers);
+
+                    if (!response.ok) {
+                        return response.text().then((text) => {
+                            console.error('Error response from server:', text);
+                            throw new Error(text || `Server responded with status: ${response.status}`);
+                        });
+                    }
+
+                    return response.text();
+                })
+                .then((data) => {
+                    console.log('Server response:', data);
+                    alert(data);
+                })
+                .catch((error) => {
+                    console.error('Error uploading file:', error);
+                    alert('Error uploading file.');
+                });
+        }
+    </script>
+</body>
+
+</html>
