@@ -13,40 +13,103 @@
     <link rel="stylesheet" href="assets/css/main.css" />
 </head>
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        line-height: 1.6;
-        color: #333;
+    /* Reset default margins and paddings for all elements */
+    * {
+        box-sizing: border-box;
         margin: 0;
         padding: 0;
     }
 
+    /* Style for the main FAQ container */
     .faq-container {
         max-width: 800px;
-        margin: 2rem auto;
-        padding: 0 20px;
+        /* Limit the width for better readability */
+        margin: 50px auto;
+        /* Center the container and add vertical spacing */
+        padding: 20px;
+        font-family: 'Arial, sans-serif';
+        color: #333;
+        /* Base text color */
     }
 
-    .faq-title {
+    /* Style for the main title */
+    .faq-container h1 {
         text-align: center;
+        margin-bottom: 40px;
         color: #2c3e50;
+        /* Dark blue color for the title */
     }
 
+    /* Style for each FAQ item */
     .faq-item {
-        margin-bottom: 20px;
-        border-bottom: 1px solid #eee;
-        padding-bottom: 10px;
+        border-bottom: 1px solid #ddd;
+        /* Light gray border between items */
+        overflow: hidden;
+        /* Hide overflowing content */
     }
 
+    /* Style for the question buttons */
     .faq-question {
-        font-weight: bold;
-        color: #3498db;
+        background-color: 0090cs;
+        /* Light gray background */
+        width: 100%;
+        padding: 20px;
+        text-align: left;
+        font-size: 18px;
+        border: none;
+        outline: none;
         cursor: pointer;
+        position: relative;
+        transition: background-color 0.3s ease;
+        margin: 10px;
+        /* Smooth background transition on hover */
     }
 
+    /* Hover effect for question buttons */
+    .faq-question:hover {
+        background-color: 0090cs;
+        /* Slightly darker gray on hover */
+    }
+
+    /* Style for the arrow icon */
+    .faq-question .arrow {
+        position: absolute;
+        right: 20px;
+        transition: transform 0.3s ease;
+        /* Smooth rotation transition */
+    }
+
+    /* Rotate the arrow when the question is active (expanded) */
+    .faq-question.active .arrow {
+        transform: rotate(180deg);
+        /* Rotate arrow 180 degrees */
+    }
+
+    /* Style for the answer sections */
     .faq-answer {
-        margin-top: 10px;
-        display: none;
+        max-height: 0;
+        /* Initially hide the answer */
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        /* Smooth transition for expanding */
+        background-color: #fff;
+        /* White background for answers */
+    }
+
+    /* Style for the answer text */
+    .faq-answer p {
+        padding: 20px;
+        font-size: 16px;
+        line-height: 1.5;
+        /* Increase line height for better readability */
+        color: #555;
+        /* Slightly lighter text color for answers */
+    }
+
+    /* Harmonious color palette for the body background */
+    body {
+        background-color: #f5f7fa;
+        /* Very light blue-gray background */
     }
 </style>
 
@@ -97,175 +160,225 @@
         <body>
             <div class="faq-container">
                 <div class="faq-item">
-                    <div class="faq-question">What is VYMMA?</div>
+                    <button class="faq-question">
+                        What is VYMMA?
+                        <span class="arrow">&#9660;</span>
+                    </button>
                     <div class="faq-answer">
-                        VYMMA is the Vancouver Youth Mathematical Modeling Association, a non-profit organization
-                        focused on teaching students how to apply mathematics to solve real-world problems through
-                        modeling.
+                        <p>VYMMA is the Vancouver Youth Mathematical Modeling Association, a non-profit organization
+                            focused on
+                            teaching students how to apply mathematics to solve real-world problems through modeling.
+                        </p>
                     </div>
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question">Who can join VYMMA?</div>
+                    <button class="faq-question">
+                        Who can join VYMMA?
+                        <span class="arrow">&#9660;</span>
+                    </button>
                     <div class="faq-answer">
-                        VYMMA is open to high school students passionate about mathematics and problem-solving.
+                        <p>VYMMA is open to high school students passionate about mathematics and problem-solving.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question">What activities does VYMMA offer?</div>
+                    <button class="faq-question">
+                        What activities does VYMMA offer?
+                        <span class="arrow">&#9660;</span>
+                    </button>
                     <div class="faq-answer">
-                        We offer group projects, design activities, workshops, and opportunities to collaborate on
-                        real-world mathematical modeling challenges.
+                        <p>We offer group projects, design activities, workshops, and opportunities to collaborate on
+                            real-world
+                            mathematical modeling challenges.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question">How do I get involved?</div>
+                    <button class="faq-question">
+                        How do I get involved?
+                        <span class="arrow">&#9660;</span>
+                    </button>
                     <div class="faq-answer">
-                        You can join by contacting us through our website or signing up for one of our events.
+                        <p>You can join by contacting us through our website or signing up for one of our events.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question">What is mathematical modelling?</div>
+                    <button class="faq-question">
+                        What is mathematical modelling?
+                        <span class="arrow">&#9660;</span>
+                    </button>
                     <div class="faq-answer">
-                        Mathematical modelling is the process of using mathematical principles to convert a real-life
-                        scenario into an abstract model. This allows for deeper analysis of the systems around us.
+                        <p>Mathematical modelling is the process of using mathematical principles to convert a real-life
+                            scenario
+                            into an abstract model. This allows for deeper analysis of the systems around us.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question">Why is mathematical modeling important?</div>
+                    <button class="faq-question">
+                        Why is mathematical modeling important?
+                        <span class="arrow">&#9660;</span>
+                    </button>
                     <div class="faq-answer">
-                        Mathematical modeling bridges the gap between abstract mathematics and practical applications,
-                        enabling innovative solutions to complex problems.
+                        <p>Mathematical modeling bridges the gap between abstract mathematics and practical
+                            applications, enabling
+                            innovative solutions to complex problems.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question">Can I join VYMMA if I have no experience?</div>
+                    <button class="faq-question">
+                        Can I join VYMMA if I have no experience?
+                        <span class="arrow">&#9660;</span>
+                    </button>
                     <div class="faq-answer">
-                        Of course! VYMMA encourages any new student who is curious to try mathematical modelling. It is
-                        an important skill and can allow for deeper understanding of the systems around us.
+                        <p>Of course! VYMMA encourages any new student who is curious to try mathematical modelling. It
+                            is an
+                            important skill and can allow for deeper understanding of the systems around us.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question">What are the benefits of mathematical modelling?</div>
+                    <button class="faq-question">
+                        What are the benefits of mathematical modelling?
+                        <span class="arrow">&#9660;</span>
+                    </button>
                     <div class="faq-answer">
-                        Mathematical modelling encourages critical thinking and opens up opportunities for STEM careers.
-                        Students also learn how to use computer softwares and tools for modelling.
+                        <p>Mathematical modelling encourages critical thinking and opens up opportunities for STEM
+                            careers. Students
+                            also learn how to use computer softwares and tools for modelling.</p>
                     </div>
                 </div>
-
             </div>
 
-            <script>
-                document.querySelectorAll('.faq-question').forEach(question => {
-                    question.addEventListener('click', () => {
-                        const answer = question.nextElementSibling;
-                        answer.style.display = answer.style.display === 'none' ? 'block' : 'none';
-                    });
-                });
-            </script>
-        </body>
-        <!-- Footer -->
-        <div id="footer-wrapper">
-            <footer id="footer" class="container">
-                <div class="row">
-                    <div class="col-3 col-6-medium col-12-small">
-
-                        <!-- Links -->
-                        <section class="widget links">
-                            <h3>Random Stuff</h3>
-                            <ul class="style2">
-                                <li><a href="#">Etiam feugiat condimentum</a></li>
-                                <li><a href="#">Aliquam imperdiet suscipit odio</a></li>
-                                <li><a href="#">Sed porttitor cras in erat nec</a></li>
-                                <li><a href="#">Felis varius pellentesque potenti</a></li>
-                                <li><a href="#">Nullam scelerisque blandit leo</a></li>
-                            </ul>
-                        </section>
-
-                    </div>
-                    <div class="col-3 col-6-medium col-12-small">
-
-                        <!-- Links -->
-                        <section class="widget links">
-                            <h3>Random Stuff</h3>
-                            <ul class="style2">
-                                <li><a href="#">Etiam feugiat condimentum</a></li>
-                                <li><a href="#">Aliquam imperdiet suscipit odio</a></li>
-                                <li><a href="#">Sed porttitor cras in erat nec</a></li>
-                                <li><a href="#">Felis varius pellentesque potenti</a></li>
-                                <li><a href="#">Nullam scelerisque blandit leo</a></li>
-                            </ul>
-                        </section>
-
-                    </div>
-                    <div class="col-3 col-6-medium col-12-small">
-
-                        <!-- Links -->
-                        <section class="widget links">
-                            <h3>Random Stuff</h3>
-                            <ul class="style2">
-                                <li><a href="#">Etiam feugiat condimentum</a></li>
-                                <li><a href="#">Aliquam imperdiet suscipit odio</a></li>
-                                <li><a href="#">Sed porttitor cras in erat nec</a></li>
-                                <li><a href="#">Felis varius pellentesque potenti</a></li>
-                                <li><a href="#">Nullam scelerisque blandit leo</a></li>
-                            </ul>
-                        </section>
-
-                    </div>
-                    <div class="col-3 col-6-medium col-12-small">
-
-                        <!-- Contact -->
-                        <section class="widget contact">
-                            <h3>Contact Us</h3>
-                            <ul>
-                                <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a>
-                                </li>
-                                <li><a href="#" class="icon brands fa-facebook-f"><span
-                                            class="label">Facebook</span></a></li>
-                                <li><a href="#" class="icon brands fa-instagram"><span
-                                            class="label">Instagram</span></a></li>
-                                <li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a>
-                                </li>
-                                <li><a href="#" class="icon brands fa-pinterest"><span
-                                            class="label">Pinterest</span></a></li>
-                            </ul>
-                            <p>1234 Fictional Road<br />
-                                Nashville, TN 00000<br />
-                                (800) 555-0000</p>
-                        </section>
-
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <div id="copyright">
-                            <ul class="menu">
-                                <li>&copy; Untitled. All rights reserved</li>
-                                <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </footer>
-        </div>
-
     </div>
+</body>
+<!-- Footer -->
+<div id="footer-wrapper">
+    <footer id="footer" class="container">
+        <div class="row">
+            <div class="col-3 col-6-medium col-12-small">
 
-    <!-- Scripts -->
+                <!-- Links -->
+                <section class="widget links">
+                    <h3>Random Stuff</h3>
+                    <ul class="style2">
+                        <li><a href="#">Etiam feugiat condimentum</a></li>
+                        <li><a href="#">Aliquam imperdiet suscipit odio</a></li>
+                        <li><a href="#">Sed porttitor cras in erat nec</a></li>
+                        <li><a href="#">Felis varius pellentesque potenti</a></li>
+                        <li><a href="#">Nullam scelerisque blandit leo</a></li>
+                    </ul>
+                </section>
 
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/jquery.dropotron.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
+            </div>
+            <div class="col-3 col-6-medium col-12-small">
+
+                <!-- Links -->
+                <section class="widget links">
+                    <h3>Random Stuff</h3>
+                    <ul class="style2">
+                        <li><a href="#">Etiam feugiat condimentum</a></li>
+                        <li><a href="#">Aliquam imperdiet suscipit odio</a></li>
+                        <li><a href="#">Sed porttitor cras in erat nec</a></li>
+                        <li><a href="#">Felis varius pellentesque potenti</a></li>
+                        <li><a href="#">Nullam scelerisque blandit leo</a></li>
+                    </ul>
+                </section>
+
+            </div>
+            <div class="col-3 col-6-medium col-12-small">
+
+                <!-- Links -->
+                <section class="widget links">
+                    <h3>Random Stuff</h3>
+                    <ul class="style2">
+                        <li><a href="#">Etiam feugiat condimentum</a></li>
+                        <li><a href="#">Aliquam imperdiet suscipit odio</a></li>
+                        <li><a href="#">Sed porttitor cras in erat nec</a></li>
+                        <li><a href="#">Felis varius pellentesque potenti</a></li>
+                        <li><a href="#">Nullam scelerisque blandit leo</a></li>
+                    </ul>
+                </section>
+
+            </div>
+            <div class="col-3 col-6-medium col-12-small">
+
+                <!-- Contact -->
+                <section class="widget contact">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a>
+                        </li>
+                        <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+                        <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+                        <li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a>
+                        </li>
+                        <li><a href="#" class="icon brands fa-pinterest"><span class="label">Pinterest</span></a></li>
+                    </ul>
+                    <p>1234 Fictional Road<br />
+                        Nashville, TN 00000<br />
+                        (800) 555-0000</p>
+                </section>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div id="copyright">
+                    <ul class="menu">
+                        <li>&copy; Untitled. All rights reserved</li>
+                        <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script>
+    // Select all question buttons
+    const faqQuestions = document.querySelectorAll('.faq-question');
+
+    // Loop through each question button
+    faqQuestions.forEach(question => {
+        // Add a click event listener to each question
+        question.addEventListener('click', () => {
+            // Close any other open answers except the one clicked
+            faqQuestions.forEach(item => {
+                if (item !== question) {
+                    item.classList.remove('active'); // Remove 'active' class to reset arrow rotation
+                    item.nextElementSibling.style.maxHeight = null; // Collapse the answer
+                }
+            });
+
+            // Toggle 'active' class on the clicked question to rotate the arrow
+            question.classList.toggle('active');
+
+            // Select the corresponding answer div
+            const answer = question.nextElementSibling;
+
+            // Check if the answer is already open
+            if (answer.style.maxHeight) {
+                // If open, close it by resetting max-height
+                answer.style.maxHeight = null;
+            } else {
+                // If closed, set max-height to scrollHeight to expand it
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+            }
+        });
+    });
+</script>
+
+
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.dropotron.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
 
 </body>
 
